@@ -1,0 +1,7 @@
+package kodlama.io.devs.dataAccess;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SubTechnologiesRepository extends JpaRepository<T, ID>{
+
+}

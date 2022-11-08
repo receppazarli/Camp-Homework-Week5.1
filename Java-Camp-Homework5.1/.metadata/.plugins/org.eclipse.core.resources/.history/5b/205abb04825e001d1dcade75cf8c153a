@@ -1,0 +1,50 @@
+package kodlama.io.devs.business.concretes;
+
+import java.util.List;
+
+import kodlama.io.devs.business.abstracts.SubTechnologiesService;
+import kodlama.io.devs.business.requests.subTechnologies.CreateSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.DeleteSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.UpdateSubTechnologiesRequest;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+import kodlama.io.devs.dataAccess.abstracts.LanguageRepository;
+import kodlama.io.devs.dataAccess.abstracts.SubTechnologiesRepository;
+
+public class SubTechnologiesManager implements SubTechnologiesService {
+
+	SubTechnologiesRepository subTechnologiesRepository;
+	LanguageRepository languageRepository;
+	
+	
+	public SubTechnologiesManager(SubTechnologiesRepository subTechnologiesRepository) {
+		this.subTechnologiesRepository = subTechnologiesRepository;
+		this.languageRepository=languageRepository;
+	}
+
+	@Override
+	public List<GetAllsubTechnologiesResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}

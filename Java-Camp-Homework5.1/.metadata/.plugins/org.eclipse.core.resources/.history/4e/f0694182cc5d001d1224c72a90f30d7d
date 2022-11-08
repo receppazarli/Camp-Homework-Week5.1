@@ -1,0 +1,5 @@
+package kodlama.io.devs.business.requests.languages;
+
+public class UpdateLanguagesRequest {
+
+}

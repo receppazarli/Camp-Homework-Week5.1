@@ -1,0 +1,133 @@
+package kodlama.io.devs.business.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kodlama.io.devs.business.abstracts.SubTechnologiesService;
+import kodlama.io.devs.business.requests.subTechnologies.CreateSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.DeleteSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.UpdateSubTechnologiesRequest;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+import kodlama.io.devs.dataAccess.abstracts.LanguageRepository;
+import kodlama.io.devs.dataAccess.abstracts.SubTechnologiesRepository;
+import kodlama.io.devs.entities.concretes.Language;
+import kodlama.io.devs.entities.concretes.SubTechnologies;
+
+public class SubTechnologiesManager implements SubTechnologiesService {
+
+	SubTechnologiesRepository subTechnologiesRepository;
+	LanguageRepository languageRepository;
+
+	public SubTechnologiesManager(SubTechnologiesRepository subTechnologiesRepository,
+			LanguageRepository languageRepository) {
+		this.subTechnologiesRepository = subTechnologiesRepository;
+		this.languageRepository = languageRepository;
+	}
+
+	@Override
+	public List<GetAllsubTechnologiesResponse> getAll() {
+
+		List<SubTechnologies> subTechnologies = subTechnologiesRepository.findAll();
+		List<GetAllsubTechnologiesResponse> subTechnologiesResponse = new ArrayList<GetAllsubTechnologiesResponse>();
+
+		for (SubTechnologies subTechnologie : subTechnologies) {
+			GetAllsubTechnologiesResponse responseItem = new GetAllsubTechnologiesResponse();
+			responseItem.setId(subTechnologie.getId());
+			responseItem.setProgrammingLanguageId(subTechnologie.getLanguage().getId());
+			responseItem.setName(subTechnologie.getName());
+			responseItem.setProgrammingLanguageName(subTechnologie.getLanguage().getName());
+			subTechnologiesResponse.add(responseItem);
+		}
+
+		return subTechnologiesResponse;
+	}
+
+	@Override
+	public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) throws Exception {
+		SubTechnologies subTechnologies = new SubTechnologies();
+		Language language = this.languageRepository.findById(createSubTechnologiesRequest.getLanguagesId()).get();
+
+		subTechnologies.setName(createSubTechnologiesRequest.getName());
+		subTechnologies.setLanguage(language);
+
+		if (isNameExistForAdd(subTechnologies)) {
+			throw new Exception("Programming language with this name already exists");
+		}
+		if (isNameEmptyForAdd(subTechnologies)) {
+			throw new Exception("Id not found");
+		}
+		this.subTechnologiesRepository.save(subTechnologies);
+
+	}
+
+	@Override
+	public void update(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) throws Exception {
+		if (!isIdExist(updateSubTechnologiesRequest.getId())) {
+			throw new Exception("Id not found");
+		}
+		if (isNameEmptyForUpdate(updateSubTechnologiesRequest)) {
+			throw new Exception("Name field cannot be empty");
+		}
+		if (isNameExistForUpdate(updateSubTechnologiesRequest)) {
+			throw new Exception("Programming language with this name already exists");
+		}
+		
+		SubTechnologies subTechnologies = this.subTechnologiesRepository.findById(updateSubTechnologiesRequest.getId()).get();
+		
+		Language language = this.languageRepository.findById(updateSubTechnologiesRequest.getLanguageId()).get();
+
+		subTechnologies.setName(updateSubTechnologiesRequest.getName());
+		subTechnologies.setLanguage(language);
+		this.subTechnologiesRepository.save(subTechnologies);
+	}
+
+	@Override
+	public void delete(DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) throws Exception {
+		if (!isIdExist(deleteSubTechnologiesRequest.getId())) {
+			throw new Exception("Id not found");
+		}
+
+	}
+
+	private boolean isNameExistForAdd(SubTechnologies subTechnologies) {
+		for (GetAllsubTechnologiesResponse subTechnologiesResponse : getAll()) {
+			if (subTechnologies.getName().equals(subTechnologiesResponse.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isNameEmptyForAdd(SubTechnologies subTechnologies) {
+		if (subTechnologies.getName().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isNameEmptyForUpdate(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) {
+		if (updateSubTechnologiesRequest.getName().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isNameExistForUpdate(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) {
+		for (GetAllsubTechnologiesResponse subTechnologiesResponse : getAll()) {
+			if (updateSubTechnologiesRequest.getName().equals(subTechnologiesResponse.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isIdExist(int id) {
+		for (GetAllsubTechnologiesResponse subTechnologiesResponse : getAll()) {
+			if (subTechnologiesResponse.getId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

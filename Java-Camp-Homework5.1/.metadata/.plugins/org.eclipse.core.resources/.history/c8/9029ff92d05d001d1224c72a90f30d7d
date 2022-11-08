@@ -1,0 +1,26 @@
+package kodlama.io.devs.web.api.controllers;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import kodlama.io.devs.web.api.abstracts.Entity;
+
+public class SubTechnologies implements Entity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+
+	@Column(name = "name")
+	private String name;
+
+	@ManyToOne
+	@JoinColumn(name = "programmingLanguage_id")
+	private ProgrammingLanguage programmingLanguage;
+
+}

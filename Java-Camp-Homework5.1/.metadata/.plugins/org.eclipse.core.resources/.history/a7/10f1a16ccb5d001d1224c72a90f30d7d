@@ -1,0 +1,7 @@
+package kodlama.io.devs.web.api.controllers;
+
+import kodlama.io.devs.web.api.abstracts.Entity;
+
+public class SubTechnologies implements Entity{
+
+}

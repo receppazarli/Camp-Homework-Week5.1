@@ -1,0 +1,17 @@
+package kodlama.io.devs.business.abstracts;
+
+import java.util.List;
+
+import kodlama.io.devs.business.requests.languages.CreateLanguageRequest;
+import kodlama.io.devs.business.requests.languages.DeleteLanguageRequest;
+import kodlama.io.devs.business.requests.languages.UpdateLanguagesRequest;
+import kodlama.io.devs.business.responses.languages.GetAllLanguagesResponse;
+
+public interface LanguageService {
+	List<GetAllLanguagesResponse> getAll();
+	void add(CreateLanguageRequest createLanguageRequest);
+	void update(UpdateLanguagesRequest updateLanguagesRequest) throws Exception; 
+	void delete(DeleteLanguageRequest deleteLanguageRequest) throws Exception;
+	int getById(int id) throws Exception;
+	
+}

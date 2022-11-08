@@ -1,0 +1,9 @@
+package kodlama.io.devs.business.responses.subTechonoligies;
+
+
+
+public class GetAllsubTechnologiesResponse {
+	private int id;
+	private String name;
+	
+}

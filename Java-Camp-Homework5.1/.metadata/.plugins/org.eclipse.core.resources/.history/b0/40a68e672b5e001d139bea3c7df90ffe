@@ -1,0 +1,16 @@
+package kodlama.io.devs.business.abstracts;
+
+import java.util.List;
+
+import kodlama.io.devs.business.requests.languages.CreateLanguageRequest;
+import kodlama.io.devs.business.responses.languages.GetAllLanguagesResponse;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+
+public interface SubTechnologiesService {
+
+	List<GetAllsubTechnologiesResponse> getAll();
+	void add(CreateLanguageRequest createLanguageRequest);
+	void update(int id, CreateLanguageRequest createLanguageRequest) throws Exception; // yapılıcak
+	void delete(int id);
+	
+}

@@ -1,0 +1,14 @@
+package kodlama.io.devs.entities.concretes;
+
+import kodlama.io.devs.web.api.abstracts.Entity;
+
+public class SubTechnologies implements Entity {
+
+	private int id;
+	
+	private String name;
+	
+	private Language language;
+	
+	
+}

@@ -1,0 +1,9 @@
+package kodlama.io.devs.dataAccess.abstracts;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import kodlama.io.devs.web.api.controllers.SubTechnologies;
+
+public interface SubTechnologiesRepository extends JpaRepository<SubTechnologies, Integer>{
+
+}

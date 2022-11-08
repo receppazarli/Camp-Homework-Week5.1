@@ -1,0 +1,15 @@
+package kodlama.io.devs.business.abstracts;
+
+import java.util.List;
+
+import kodlama.io.devs.business.requests.subTechnologies.CreateSubTechnologiesRequest;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+
+public interface SubTechnologiesService {
+
+	List<GetAllsubTechnologiesResponse> getAll();
+	void add(CreateSubTechnologiesRequest createSubTechnologiesRequest);
+	void update(int id, CreateSubTechnologiesRequest createSubTechnologiesRequest) throws Exception; 
+	void delete(int id);
+	
+}

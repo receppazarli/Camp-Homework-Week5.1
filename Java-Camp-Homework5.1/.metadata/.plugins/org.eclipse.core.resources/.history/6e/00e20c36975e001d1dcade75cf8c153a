@@ -1,0 +1,5 @@
+package kodlama.io.devs.web.api.controllers;
+
+public class SubTechnologiesController {
+
+}

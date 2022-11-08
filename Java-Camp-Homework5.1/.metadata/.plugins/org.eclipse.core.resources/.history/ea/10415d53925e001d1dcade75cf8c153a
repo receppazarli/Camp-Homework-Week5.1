@@ -1,0 +1,61 @@
+package kodlama.io.devs.business.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kodlama.io.devs.business.abstracts.SubTechnologiesService;
+import kodlama.io.devs.business.requests.subTechnologies.CreateSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.DeleteSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.UpdateSubTechnologiesRequest;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+import kodlama.io.devs.dataAccess.abstracts.LanguageRepository;
+import kodlama.io.devs.dataAccess.abstracts.SubTechnologiesRepository;
+import kodlama.io.devs.entities.concretes.Language;
+import kodlama.io.devs.entities.concretes.SubTechnologies;
+
+public class SubTechnologiesManager implements SubTechnologiesService {
+
+	SubTechnologiesRepository subTechnologiesRepository;
+	LanguageRepository languageRepository;
+
+	public SubTechnologiesManager(SubTechnologiesRepository subTechnologiesRepository,
+			LanguageRepository languageRepository) {
+		this.subTechnologiesRepository = subTechnologiesRepository;
+		this.languageRepository = languageRepository;
+	}
+
+	@Override
+	public List<GetAllsubTechnologiesResponse> getAll() {
+
+		List<SubTechnologies> subTechnologies = subTechnologiesRepository.findAll();
+		List<GetAllsubTechnologiesResponse> subTechnologiesResponse = new ArrayList<GetAllsubTechnologiesResponse>();
+
+		for (SubTechnologies subTechnologie : subTechnologies) {
+			GetAllsubTechnologiesResponse responseItem = new GetAllsubTechnologiesResponse();
+			responseItem.setId(subTechnologie.getId());
+			responseItem.setName(subTechnologie.getName());
+			subTechnologiesResponse.add(responseItem);
+		}
+
+		return subTechnologiesResponse;
+	}
+
+	@Override
+	public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void update(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

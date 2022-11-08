@@ -1,0 +1,7 @@
+package kodlama.io.devs.business.requests.subTechnologies;
+
+public class UpdateSubTechnologiesRequest {
+
+	private int id;
+	private String name;
+}

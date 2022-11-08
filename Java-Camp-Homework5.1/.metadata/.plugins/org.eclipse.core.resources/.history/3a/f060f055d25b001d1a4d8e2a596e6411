@@ -1,0 +1,22 @@
+package kodlama.io.devs.entities.concretes;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name = "languages")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+
+public class Language {
+
+	int id;
+	String name;
+	
+	
+}

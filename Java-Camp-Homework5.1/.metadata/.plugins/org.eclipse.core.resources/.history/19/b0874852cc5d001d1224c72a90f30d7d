@@ -1,0 +1,12 @@
+package kodlama.io.devs.business.requests.languages;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+public class DeleteLanguageRequest {
+
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	private int id;
+}

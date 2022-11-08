@@ -1,0 +1,6 @@
+package kodlama.io.devs.business.requests.subTechnologies;
+
+public class DeleteSubTechnologiesRequest {
+
+	private int id;
+}

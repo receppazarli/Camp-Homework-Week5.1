@@ -1,0 +1,12 @@
+package kodlama.io.devs.business.abstracts;
+
+import java.util.List;
+
+import kodlama.io.devs.business.requests.languages.CreateLanguageRequest;
+import kodlama.io.devs.business.responses.languages.GetAllLanguagesResponse;
+
+public interface SubTechnologiesService {
+
+	
+	
+}

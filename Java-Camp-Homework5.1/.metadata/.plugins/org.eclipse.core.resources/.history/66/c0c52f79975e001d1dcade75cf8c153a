@@ -1,0 +1,16 @@
+package kodlama.io.devs.web.api.controllers;
+
+import java.util.List;
+
+import kodlama.io.devs.business.requests.subTechnologies.CreateSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.DeleteSubTechnologiesRequest;
+import kodlama.io.devs.business.requests.subTechnologies.UpdateSubTechnologiesRequest;
+import kodlama.io.devs.business.responses.subTechonoligies.GetAllsubTechnologiesResponse;
+
+public class SubTechnologiesController {
+
+	public List<GetAllsubTechnologiesResponse> getAll();
+	public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) throws Exception{}
+	public void update(UpdateSubTechnologiesRequest updateSubTechnologiesRequest) throws Exception{} 
+	public void delete(DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) throws Exception{}
+}
